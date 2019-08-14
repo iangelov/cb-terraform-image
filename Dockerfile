@@ -12,11 +12,9 @@ RUN apk add --update curl zip && \
     echo "${TERRAFORM_VERSION_SHA256SUM}  /tmp/terraform.zip" | sha256sum -c - && \
     unzip /tmp/terraform.zip -d /usr/bin && \
     rm /tmp/terraform.zip && \
-    curl -sSL --fail 'https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz' \
+    curl -sSL --fail https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz \
     -o /tmp/conftest.tar.gz && \
-    tar -C /usr/local/bin -zxf /tmp/conftest.tar.gz conftest && \
-    apk del curl zip && \
-    rm -rf /var/cache/apk/*
+    tar -C /usr/local/bin -zxf /tmp/conftest.tar.gz conftest
 
 FROM library/alpine:${ALPINE_VERSION}
 
