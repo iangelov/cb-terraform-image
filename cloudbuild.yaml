@@ -1,10 +1,10 @@
 # In this directory, run the following command to build this builder.
 # $ gcloud builds submit . --config=cloudbuild.yaml
 substitutions:
-  _TERRAFORM_VERSION: 0.12.8
-  _TERRAFORM_VERSION_SHA256SUM: 43806e68f7af396449dd4577c6e5cb63c6dc4a253ae233e1dddc46cf423d808b
-  _ALPINE_VERSION: 3.10.2
-  _CONFTEST_VERSION: 0.11.0
+  _TERRAFORM_VERSION: 0.12.17
+  _TERRAFORM_VERSION_SHA256SUM: 8124c7dfe5036377de0637378ad32cf530477403c29ab1ccefbaa50a05d059c2
+  _ALPINE_VERSION: 3.10.3
+  _CONFTEST_VERSION: 0.15.0
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   env:
@@ -18,8 +18,8 @@ steps:
   - --build-arg=TERRAFORM_VERSION
   - --build-arg=TERRAFORM_VERSION_SHA256SUM
   - --build-arg=CONFTEST_VERSION
-  - --tag=gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}
+  - --tag=eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}
   - .
-- name: 'gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}'
+- name: 'eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}'
   args: ['version']
-images: ['gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}']
+images: ['eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}']
