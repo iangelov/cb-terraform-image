@@ -23,6 +23,6 @@ RUN apk add --update ca-certificates && rm -rf /var/cache/apk/*
 COPY --from=builder /usr/bin/terraform /usr/bin/terraform
 COPY --from=builder /usr/bin/conftest /usr/bin/conftest
 
-USER 1000
+# USER 1000
 
 ENTRYPOINT ["/usr/bin/terraform"]
