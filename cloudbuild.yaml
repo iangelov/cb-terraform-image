@@ -3,8 +3,8 @@
 substitutions:
   _TERRAFORM_VERSION: 0.12.24
   _TERRAFORM_VERSION_SHA256SUM: 602d2529aafdaa0f605c06adb7c72cfb585d8aa19b3f4d8d189b42589e27bf11
-  _ALPINE_VERSION: 3.10.2
-  _CONFTEST_VERSION: 0.11.0
+  _ALPINE_VERSION: 3.10.3
+  _CONFTEST_VERSION: 0.15.0
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   env:
@@ -18,8 +18,8 @@ steps:
   - --build-arg=TERRAFORM_VERSION
   - --build-arg=TERRAFORM_VERSION_SHA256SUM
   - --build-arg=CONFTEST_VERSION
-  - --tag=gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}
+  - --tag=eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}
   - .
-- name: 'gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}'
+- name: 'eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}'
   args: ['version']
-images: ['gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}']
+images: ['eu.gcr.io/${PROJECT_ID}/terraform:${_TERRAFORM_VERSION}']
